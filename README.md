@@ -1,4 +1,4 @@
-# youtube-studio
+# looker-studio
 
 Para usar este script hay que setear el perfil de Chrome que tiene acceso como usuario (de google) al reporte en cuestión en el archivo .env
 También debe modificarse la url del reporte y el indice del objeto gráfico en el Makefile.
