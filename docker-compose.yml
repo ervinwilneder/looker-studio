@@ -1,0 +1,10 @@
+version: '0.1'
+
+services:
+  scraper:
+    build: .
+    image: ervinwilneder/looker-studio
+    container_name: looker-studio
+    volumes:
+      - ./downloads:/usr/src/app/downloads
+      - ./screenshots:/usr/src/app/screenshots
