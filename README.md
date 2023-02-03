@@ -2,7 +2,7 @@
 
 Script para exportar datos de un objeto gráfico en Looker Studio.
 
-Para usar este script hay que setear el perfil de Chrome que tiene acceso como usuario (de google) al reporte en cuestión en el archivo `.env`. Para vel perfil, ir a la url `chrome://version` y chequear la variable `Profile Path`.
+Para usar este script hay que setear el perfil de Chrome que tiene acceso como usuario (de google) al reporte en cuestión en el archivo `.env`. Para ver el perfil, ir a la url `chrome://version` y chequear la variable `Profile Path`.
 También debe modificarse la url del reporte y el indice del objeto gráfico en el `Makefile`.
 El indice se obtiene abriendo el reporte, luego la consola del navegador y ejecutando `document.querySelectorAll('ng2-chart-menu-button button[mattooltip="More"]')`. Aparecerá un listado de elementos/nodes HTML y debe elegirse el que corresponda al objeto para el cual quiere descargarse la info.
 Todo esto se hace por única vez.
