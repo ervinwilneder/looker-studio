@@ -11,7 +11,6 @@ const { parser } = require('./cli-options');
 const args = parser.parse_args();
 
 // Init variables
-const jobs = new Array();
 let screenshotCounter = 1;
 let chartIndex = args.chart_index;
 let noContainer = args.no_container;
