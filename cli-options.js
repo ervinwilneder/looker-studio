@@ -23,5 +23,10 @@ parser.add_argument('--chart-index', {
     type: 'int'
 });
 
+parser.add_argument('--no-container', {
+    help: 'To run locally without Docker',
+    action: 'store_true'
+});
+
 // Export parser variable
 module.exports = { parser };

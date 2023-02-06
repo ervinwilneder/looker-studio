@@ -14,7 +14,7 @@ const args = parser.parse_args();
 const jobs = new Array();
 let screenshotCounter = 1;
 let chartIndex = args.chart_index;
-console.log(chartIndex);
+let noContainer = args.no_container;
 
 // Setup folders
 if (!fs.existsSync('auth')) { fs.mkdirSync('auth') };
@@ -28,7 +28,7 @@ if (!fs.existsSync('downloads')) { fs.mkdirSync('downloads') };
 
         if (args.auth) {
             // Launch browser and get opened tab
-            const browser = await puppeteer.launch(config.PUPPETEER_OPTIONS_WINDOWS_AUTH);
+            const browser = await puppeteer.launch(config.PUPPETEER_OPTIONS_NO_CONTAINER);
             const [page] = await browser.pages();
 
             // Go to home page
@@ -45,7 +45,7 @@ if (!fs.existsSync('downloads')) { fs.mkdirSync('downloads') };
         }
         
         // Launch browser and get opened tab
-        const browser = await puppeteer.launch(config.PUPPETEER_OPTIONS);
+        const browser = await puppeteer.launch(noContainer ? config.PUPPETEER_OPTIONS_NO_CONTAINER : config.PUPPETEER_OPTIONS);
         const [page] = await browser.pages();
         
         // Set some browser & navigation features
@@ -53,14 +53,16 @@ if (!fs.existsSync('downloads')) { fs.mkdirSync('downloads') };
         await page.setDefaultNavigationTimeout(60000);
 
         // Handle cookies
-        if (fs.existsSync('auth/cookies.json')) {
-            let cookies = fs.readFileSync('auth/cookies.json', 'utf8');
-            let deserializedCookies = JSON.parse(cookies);
-            await page.setCookie(...deserializedCookies);
-        };
+        if (!noContainer) {
+            if (fs.existsSync('auth/cookies.json')) {
+                let cookies = fs.readFileSync('auth/cookies.json', 'utf8');
+                let deserializedCookies = JSON.parse(cookies);
+                await page.setCookie(...deserializedCookies);
+            };
 
-        // Set path to download files
-        await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: 'downloads'});
+            // Set path to download files
+            await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: 'downloads'});
+        };
 
         // Go to home page
         await page.goto(args.url, {'waitUntil' : 'networkidle2'});

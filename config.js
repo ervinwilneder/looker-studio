@@ -15,7 +15,7 @@ module.exports = {
         ],
         "ignoreHTTPSErrors": true
     },
-    PUPPETEER_OPTIONS_WINDOWS_AUTH : {
+    PUPPETEER_OPTIONS_NO_CONTAINER : {
         "product": "chrome",
         "headless": false,
         "defaultViewport": null,
