@@ -60,7 +60,7 @@ if (!fs.existsSync('downloads')) { fs.mkdirSync('downloads') };
             };
 
             // Set path to download files
-            await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: 'downloads'});
+            await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: './downloads'});
         };
 
         // Go to home page
