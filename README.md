@@ -11,4 +11,4 @@ Luego, para obtener las cookies, necesarias para instanciar una copia del navega
 Las cookies se almacenan en la carpeta auth y generalmente expiran cada cierto tiempo o al cerrar la sesión manualmente (o pueden no expirar).
 
 Finalmente, se puede correr el container con `docker compose up`. Lógicamente tener instalado previamente docker o bien implementarlo en alguna nube.
-Es un proyecto reutilizable para scrapear información de otros servicios de Google o de plataformas que requieran autenticación.
+Es un proyecto reutilizable para scrapear información de otros servicios de Google o de plataformas que requieran autenticación. En caso de querer correr el programa sin usar docker, utilizar `node index.js --no-container ...`
